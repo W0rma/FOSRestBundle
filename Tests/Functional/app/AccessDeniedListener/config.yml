@@ -1,0 +1,17 @@
+imports:
+    - { resource: ../config/default.yml }
+    - { resource: security.php }
+
+framework:
+    serializer:
+        enabled: true
+    router: { resource: "%kernel.project_dir%/AccessDeniedListener/routing.yml" }
+
+fos_rest:
+#    access_denied_listener:
+#        json: true
+    zone:
+        - { path: ^/api/* }
+
+twig:
+    strict_variables: '%kernel.debug%'
