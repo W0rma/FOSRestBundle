@@ -39,9 +39,17 @@ final class ExceptionController
     }
 
     /**
-     * @param \Throwable $exception
+     * Converts an Exception to a Response.
+     *
+     * @param Request                   $request
+     * @param \Throwable                $exception
+     * @param DebugLoggerInterface|null $logger
+     *
+     * @throws \InvalidArgumentException
+     *
+     * @return Response
      */
-    public function showAction(Request $request, $exception, DebugLoggerInterface $logger = null)
+    public function showAction(Request $request, \Throwable $exception, DebugLoggerInterface $logger = null)
     {
         $currentContent = $this->getAndCleanOutputBuffering($request->headers->get('X-Php-Ob-Level', -1));
 
